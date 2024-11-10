@@ -31,16 +31,15 @@ function App() {
     const itemIndex = newCartItemsArray.findIndex((item) => item[0] === id);
 
     if (itemIndex > -1) {
-      newCartItemsArray[itemIndex][1] += quantity;
+      newCartItemsArray[itemIndex][1] += quant;
     } else {
-      newCartItemsArray.push([id, quantity]);
+      newCartItemsArray.push([id, quant]);
     }
 
     setCartItemsArray(newCartItemsArray);
   };
   const onDelete = (id) => {
-    let newCartItemsArray = [...cartItemsArray];
-    newCartItemsArray.filter((item) => item[0] !== id);
+    let newCartItemsArray = cartItemsArray.filter((item) => item[0] !== id);
     setCartItemsArray(newCartItemsArray);
   };
 
