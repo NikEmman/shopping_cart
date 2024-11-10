@@ -22,6 +22,11 @@ function App() {
   }, []);
 
   const onAdd = (id, quantity) => {
+    let quant = Number(quantity);
+    if (isNaN(quant)) {
+      return;
+    }
+
     let newCartItemsArray = [...cartItemsArray];
     const itemIndex = newCartItemsArray.findIndex((item) => item[0] === id);
 
@@ -33,11 +38,16 @@ function App() {
 
     setCartItemsArray(newCartItemsArray);
   };
+  const onDelete = (id) => {
+    let newCartItemsArray = [...cartItemsArray];
+    newCartItemsArray.filter((item) => item[0] !== id);
+    setCartItemsArray(newCartItemsArray);
+  };
 
   return (
     <>
       <ProductsContext.Provider
-        value={{ data, loading, error, onAdd, cartItemsArray }}
+        value={{ data, loading, error, onAdd, cartItemsArray, onDelete }}
       >
         <NavBar />
         <Outlet />
