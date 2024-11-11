@@ -12,12 +12,16 @@ function CartItem({ item }) {
   const quantity = cartItemsArray.find(
     (cartItem) => cartItem[0] === item.id
   )[1];
+  const total = item.price * quantity;
 
   return (
     <div className="smallCard">
-      <p>{item.title}</p>
-      <p>Quantity: {quantity}</p>
-      <button onClick={handleDelete}> X </button>
+      <div>
+        <p>{item.title}</p>
+        <p>Quantity: {quantity}</p>
+        <button onClick={handleDelete}> X </button>
+      </div>
+      <p>{total} €</p>
     </div>
   );
 }

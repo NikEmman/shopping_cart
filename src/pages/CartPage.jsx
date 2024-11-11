@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ProductsContext from "../components/ProductsContext";
 import CartItem from "../components/CartItem";
-
+import { Link } from "react-router-dom";
 function CartPage() {
   const { data, cartItemsArray } = useContext(ProductsContext);
 
@@ -19,12 +19,18 @@ function CartPage() {
   }, 0);
 
   return (
-    <>
+    <div className="cart">
       <h1>My cart</h1>
-      {cartItems}
-      <hr />
-      <p>Your total is: {grandTotal}</p>
-    </>
+      {cartItemsArray.length > 0 ? (
+        <>
+          {cartItems} <hr />{" "}
+          <p id="total">Your total is: {grandTotal.toFixed(2)} €</p>
+          <Link to="/checkout">Proceed to Payments</Link>
+        </>
+      ) : (
+        <p>.....Your cart is empty</p>
+      )}
+    </div>
   );
 }
 

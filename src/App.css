@@ -1,6 +1,6 @@
-:root {
-  padding: none;
-  margin: none;
+* {
+  padding: 0;
+  margin: 0;
 }
 #root {
   height: 100%;
@@ -21,11 +21,17 @@ a {
   border: 1px solid rgb(231, 165, 10);
   padding: 1em;
   border-radius: 5px;
+  width: fit-content;
+  height: 1em;
 }
-a:hover {
+a:hover,
+.checkout a:hover {
   color: black;
   background-color: rgb(231, 165, 10);
   border: rgb(231, 165, 10);
+}
+.cartIcon {
+  font-size: large;
 }
 #cartCount {
   font-size: 12px;
@@ -39,21 +45,54 @@ a:hover {
   background-image: url(./assets/shopping-bag-cart.jpg);
   background-size: cover;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
+  padding-top: 2em;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
 }
-.store {
+.homePage svg path {
+  fill: transparent;
+  stroke: #000000;
+  stroke-width: 0.1;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: textAnimation 4s ease-in-out 1 forwards;
+}
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: #000000;
+    stroke-dashoffset: 0;
+  }
+}
+.store,
+.cart,
+.checkout {
+  padding: 2em;
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+.store h1,
+.cart h1,
+.checkout h1 {
+  align-self: center;
 }
 .store > input {
   width: 200px;
   padding: 1em;
   border-radius: 10px;
 }
+.cart a {
+  align-self: flex-end;
+}
+
 .cardContainer {
   width: 100%;
   display: grid;
@@ -62,10 +101,83 @@ a:hover {
 }
 .card {
   padding: 1em;
-  border: 2px solid red;
+  border: 2px solid rgb(231, 165, 10);
   width: 200px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .card > img {
-  width: 80px;
-  height: auto;
+  height: 80px;
+  width: auto;
+  align-self: center;
+}
+.card button {
+  background-color: rgb(231, 165, 10);
+  border-radius: 10px;
+}
+.card button:hover {
+  background-color: black;
+  color: rgb(231, 165, 10);
+}
+.card button:active {
+  transform: translate(3px, 3px);
+}
+.card select {
+  width: 50px;
+}
+.smallCard {
+  display: flex;
+  justify-content: space-between;
+}
+.smallCard div {
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  gap: 1em;
+}
+.smallCard button {
+  width: 20px;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 5px;
+}
+.smallCard button:hover {
+  background-color: #eb9898;
+}
+.smallCard button:active {
+  transform: translate(3px, 3px);
+}
+
+#total {
+  font-weight: 700;
+  align-self: flex-end;
+}
+.checkout {
+  background-image: url(./assets/Take-my-money.png);
+  background-size: cover;
+  width: 100vw;
+  height: 90vh;
+}
+.checkout a {
+  background-color: black;
+}
+.checkout h1 {
+  font-size: 5em;
+  color: black;
+}
+.errorPage {
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5em;
+}
+.errorPage a {
+  background-color: rgb(231, 165, 10);
+  color: #000000;
+}
+.errorPage a:hover {
+  background-color: #000000;
+  color: rgb(231, 165, 10);
 }

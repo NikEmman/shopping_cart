@@ -9,8 +9,8 @@ function NavBar() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/store">Store</Link>
-      <Link to="/cart">
-        &#x1F6D2;<span id="cartCount">{totalItems}</span>
+      <Link to="/cart" className="cartIcon">
+        Cart<span id="cartCount">{totalItems}</span>
       </Link>
     </nav>
   );

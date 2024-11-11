@@ -1,31 +1,30 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+
 function ProductCard({ product, onAdd }) {
   const [quantity, setQuantity] = useState(1);
 
   const onChange = (e) => {
-    const value = e.target.value;
-    if (value === "" || isNaN(value)) {
-      setQuantity(1);
-    } else {
-      setQuantity(Number(value));
-    }
+    const value = Number(e.target.value);
+    setQuantity(value);
   };
+
   const handleAddToCart = () => {
     if (quantity > 0 && Number.isInteger(quantity)) {
       onAdd(product.id, quantity);
     }
   };
+
   return (
-    <div className="card">
+    <div className="card" data-testid={"cartItem" + product.id}>
       <img src={product.image} alt={product.title} />
-      <input
-        type="number"
-        onChange={onChange}
-        min={1}
-        max={product.count}
-        placeholder="1"
-      />
+      <select onChange={onChange} value={quantity}>
+        {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+          <option key={num} value={num}>
+            {num}
+          </option>
+        ))}
+      </select>
       <button onClick={handleAddToCart}>Add to cart</button>
       <details>
         <summary>{product.title}</summary>
@@ -39,6 +38,6 @@ function ProductCard({ product, onAdd }) {
 export default ProductCard;
 
 ProductCard.propTypes = {
-  product: PropTypes.object,
-  onAdd: PropTypes.func,
+  product: PropTypes.object.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };

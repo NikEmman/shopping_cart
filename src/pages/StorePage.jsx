@@ -21,7 +21,7 @@ function StorePage() {
       ));
 
   return (
-    <div className="store">
+    <div className="store" data-testid="store">
       <h1>Welcome to the Store</h1>
       <input
         type="text"
@@ -30,7 +30,7 @@ function StorePage() {
         onInput={(e) => setSearchValue(e.target.value)}
       />
       <div>
-        {loading && <div>Loading posts...</div>}
+        {loading && <div>Loading products...</div>}
         {error && <div>{error}</div>}
       </div>
       <div className="cardContainer">{data && products}</div>
