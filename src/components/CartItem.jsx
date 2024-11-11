@@ -5,7 +5,6 @@ import ProductsContext from "./ProductsContext";
 function CartItem({ item }) {
   const { onDelete, cartItemsArray } = useContext(ProductsContext);
   const handleDelete = () => {
-    console.log(`Deleting ${item.title}`);
     onDelete(item.id);
   };
 
@@ -17,9 +16,11 @@ function CartItem({ item }) {
   return (
     <div className="smallCard">
       <div>
-        <p>{item.title}</p>
-        <p>Quantity: {quantity}</p>
         <button onClick={handleDelete}> X </button>
+        <p>
+          {quantity} x {item.price}€
+        </p>
+        <p>{item.title}</p>
       </div>
       <p>{total} €</p>
     </div>

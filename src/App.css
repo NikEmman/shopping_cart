@@ -57,7 +57,7 @@ a:hover,
   stroke-width: 0.1;
   stroke-dasharray: 50;
   stroke-dashoffset: 50;
-  animation: textAnimation 4s ease-in-out 1 forwards;
+  animation: textAnimation 3s ease-in-out 1 forwards;
 }
 @keyframes textAnimation {
   0% {
@@ -116,6 +116,13 @@ a:hover,
 .card button {
   background-color: rgb(231, 165, 10);
   border-radius: 10px;
+  border: none;
+  align-self: flex-end;
+  padding: 0.3em;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
 .card button:hover {
   background-color: black;
@@ -132,8 +139,7 @@ a:hover,
   justify-content: space-between;
 }
 .smallCard div {
-  display: grid;
-  grid-template-columns: 5fr 1fr 1fr;
+  display: flex;
   gap: 1em;
 }
 .smallCard button {

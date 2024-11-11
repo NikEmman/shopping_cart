@@ -18,14 +18,16 @@ function ProductCard({ product, onAdd }) {
   return (
     <div className="card" data-testid={"cartItem" + product.id}>
       <img src={product.image} alt={product.title} />
-      <select onChange={onChange} value={quantity}>
-        {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-          <option key={num} value={num}>
-            {num}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <div className="buttons">
+        <select onChange={onChange} value={quantity}>
+          {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleAddToCart}>Add to cart</button>
+      </div>
       <details>
         <summary>{product.title}</summary>
         <p>{product.description}</p>
